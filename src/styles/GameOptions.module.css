@@ -1,0 +1,7 @@
+.optionsForm {
+  display: flex;
+  flex-direction: column;
+  max-width: 325px;
+  margin: 0 auto;
+  height: 100%;
+}
