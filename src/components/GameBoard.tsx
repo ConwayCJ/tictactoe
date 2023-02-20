@@ -44,9 +44,9 @@ export default function GameBoard({ options, handleGameState, handleChangePlayer
     }
   }
 
-  function checkHorizontalWin() {
-    gameBoard.map(row => row.every(column => column === options.currentPlayer))
-  }
+  // function checkHorizontalWin() {
+  //   gameBoard.map(row => row.every(column => column === options.currentPlayer))
+  // }
 
   return (
     <div className={styles.gameBoardWrapper}>
@@ -54,9 +54,11 @@ export default function GameBoard({ options, handleGameState, handleChangePlayer
         {gameBoard.map((row, rowIndex) => (
           <div className={styles.row} key={rowIndex}>
             {row.map((column, columnIndex) => (
-              <div onClick={(e) => updateGameBoard(e, rowIndex, columnIndex)} className={styles.cell} key={columnIndex}>
-                {column}
-              </div>
+              <>
+                <div onClick={(e) => updateGameBoard(e, rowIndex, columnIndex)} className={styles.cell} key={columnIndex}>
+                  {column}
+                </div>
+              </>
             ))}
           </div >
         ))}
