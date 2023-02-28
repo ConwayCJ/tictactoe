@@ -6,28 +6,16 @@ export default function GameBoard({ options, handleGameState, handleChangePlayer
 
   const [gameBoard, setGameBoard] = useState(makeArray(options.boardSize))
 
-  /**[
-   * [null,null,null]
-   * [null,null,null]
-   * [null,null,null]
-   * ]
-   */
-
-  // useEffect(() => {
-  //   setGameBoard(makeArray(options.boardSize))
-  // }, [])
-
   function makeArray(size) {
-    const arr = []
-
-    for (let i = 0; i < size; i++) {
-      arr[i] = null
+    function newArray(size) {
+      return new Array(size).fill(null)
     }
-    console.log(arr.map(a => arr))
-    return arr.map(a => arr)
+    //this is the game board
+    return newArray(size).map(row => newArray(size))
   }
 
   function updateGameBoard(e, rowIndex, columnIndex) {
+    console.table(gameBoard)
     console.log(`
     row index: ${rowIndex}
     col indx: ${columnIndex}`)
@@ -54,11 +42,9 @@ export default function GameBoard({ options, handleGameState, handleChangePlayer
         {gameBoard.map((row, rowIndex) => (
           <div className={styles.row} key={rowIndex}>
             {row.map((column, columnIndex) => (
-              <>
-                <div onClick={(e) => updateGameBoard(e, rowIndex, columnIndex)} className={styles.cell} key={columnIndex}>
-                  {column}
-                </div>
-              </>
+              <div onClick={(e) => updateGameBoard(e, rowIndex, columnIndex)} className={styles.cell} key={columnIndex}>
+                {column}
+              </div>
             ))}
           </div >
         ))}
