@@ -17,10 +17,6 @@ export default function GameBoard({ options, handleGameState, handleChangePlayer
   }
 
   function updateGameBoard(e, rowIndex, columnIndex) {
-    console.table(gameBoard)
-    console.log(`
-    row index: ${rowIndex}
-    col indx: ${columnIndex}`)
     let updatedBoard = [...gameBoard]
     console.log(gameBoard[rowIndex][columnIndex])
 
@@ -37,29 +33,38 @@ export default function GameBoard({ options, handleGameState, handleChangePlayer
       handleChangePlayer()
     }
     else {
-      console.log('invalid cell')
+      alert('Invalid Cell')
     }
 
   }
 
   function checkHorizontalWin() {
+    // If one of the rows returns true, do the .every() method inside
     return gameBoard.some(row => {
+      //return true if every symbol on that row (horizontal) is the current player "X" \ "O"
       return row.every(symbol => symbol === options.currentPlayer)
     })
   }
 
   function checkVerticalWin() {
+    //Maps over the first row and checks if it has an 'X \ O. 
     return gameBoard[0].map((col, index) => {
+      //Then checks if every column at that index is the same as the first row.
       return gameBoard.every(row => row[index] === col && col !== null)
     }).some(res => res)
   }
 
   function checkDiagonalWin() {
-    let diagonal1, diagonal2 = true;
+    let diagonal1 = true
+    let diagonal2 = true
 
+    //Top left of the board
     let firstCellValue = gameBoard[0][0];
-    let secondCellValue = gameBoard[0][4];
+    //Top right of the board - no matter what size
+    let secondCellValue = gameBoard[0][options.boardSize - 1];
 
+    //Iterate boardSize times - assumes there is a diagonal win.
+    //If there is not a win, changes diagonal1/diagonal 2 to false.
     for (let i = 1; i < options.boardSize; i++) {
       if (gameBoard[i][i] !== firstCellValue || firstCellValue === null) {
         diagonal1 = false;
@@ -73,7 +78,8 @@ export default function GameBoard({ options, handleGameState, handleChangePlayer
         break;
       }
     }
-
+    //If diagonal 1 (topleft > bottomright) is true, return true
+    //If diagonal 2 (topright > bottomleft) is true, return true
     return diagonal1 || diagonal2;
   }
 

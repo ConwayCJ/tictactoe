@@ -13,7 +13,6 @@ function App() {
   })
 
   function handleGameState(e) {
-    e.preventDefault()
 
     setOptions({
       ...options,
