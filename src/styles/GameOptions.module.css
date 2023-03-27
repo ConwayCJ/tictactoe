@@ -5,6 +5,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  text-align: center;
 }
 
 .optionsForm {
@@ -14,4 +15,8 @@
   margin: 0 auto;
   margin-top: 3em;
   text-align: center;
+}
+
+.h1Container {
+  width: calc(450px + 8vw);
 }

@@ -2,6 +2,7 @@ import { useState } from 'react'
 import GameOptions from './components/GameOptions'
 import GameBoard from './components/GameBoard'
 import './App.css'
+import Navigation from './components/Navigation'
 
 function App() {
 
@@ -22,7 +23,8 @@ function App() {
   }
 
   function handleBoardSize(e) {
-
+    e.target.value <= 0 ? options.boardSize = 3 : options.boardSize === 3,
+      console.log('yes')
     setOptions({
       ...options,
       boardSize: parseInt(e.target.value)
@@ -39,10 +41,12 @@ function App() {
 
   return !options.gameStarted ? (
     <div>
+      <Navigation />
       <GameOptions options={options} handleGameState={handleGameState} handleBoardSize={handleBoardSize} />
     </div>
   ) : (
     <div>
+      <Navigation />
       <GameBoard options={options} handleGameState={handleGameState} handleChangePlayer={handleChangePlayer} />
     </div>
   )
