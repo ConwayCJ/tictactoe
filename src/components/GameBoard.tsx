@@ -26,9 +26,11 @@ export default function GameBoard({ options, handleGameState, handleChangePlayer
       e.target.innerHTML = options.currentPlayer
       e.target.style.color = "white"
       setGameBoard(updatedBoard)
+
       if (checkDiagonalWin() || checkHorizontalWin() || checkVerticalWin()) {
-        setGameWon(true);
-        handleGameState()
+        setGameWon(true)
+        //handleGameState()
+        return
       }
       handleChangePlayer()
     }
@@ -58,13 +60,10 @@ export default function GameBoard({ options, handleGameState, handleChangePlayer
     let diagonal1 = true
     let diagonal2 = true
 
-    //Top left of the board
+
     let firstCellValue = gameBoard[0][0];
-    //Top right of the board - no matter what size
     let secondCellValue = gameBoard[0][options.boardSize - 1];
 
-    //Iterate boardSize times - assumes there is a diagonal win.
-    //If there is not a win, changes diagonal1/diagonal 2 to false.
     for (let i = 1; i < options.boardSize; i++) {
       if (gameBoard[i][i] !== firstCellValue || firstCellValue === null) {
         diagonal1 = false;
@@ -78,8 +77,7 @@ export default function GameBoard({ options, handleGameState, handleChangePlayer
         break;
       }
     }
-    //If diagonal 1 (topleft > bottomright) is true, return true
-    //If diagonal 2 (topright > bottomleft) is true, return true
+
     return diagonal1 || diagonal2;
   }
 
