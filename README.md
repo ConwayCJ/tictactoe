@@ -2,7 +2,9 @@
 ### TypeScript | React | Vite
 Tic-tac-toe with a twist: having the ability to resize the grid to larger sizes. While I don't think anybody would realistically want to play on a 20x20 grid - it was an enjoyable challenge to see how I would handle the different win conditions if it was bigger than 3x3.
 
-## Usage
+## Usage & Installation
+
+### After cloning repository > in terminal: npm install > npm run dev
 
 Use the slider to re-size the grid.
 Maximum size set to 20 so your browser doesn't break from running out of memory.
