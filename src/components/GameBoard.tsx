@@ -8,13 +8,18 @@ export default function GameBoard({ options, handleGameState, handleChangePlayer
   const [gameBoard, setGameBoard] = useState(makeArray(options.boardSize))
   const [gameWon, setGameWon] = useState(false)
 
+  /** */
   function makeArray(size) {
+
+    //this is the game board
+    return newArray(size).map(row => newArray(size))
+
     function newArray(size) {
       return new Array(size).fill(null)
     }
-    //this is the game board
-    return newArray(size).map(row => newArray(size))
   }
+
+  Math.random()
 
   function updateGameBoard(e, rowIndex, columnIndex) {
     let updatedBoard = [...gameBoard]

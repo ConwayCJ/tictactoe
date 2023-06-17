@@ -18,7 +18,7 @@ export default function GameOptions({ options, handleGameState, handleBoardSize 
       <form className={styles.optionsForm}>
         <Typography color="inherit" sx={{ fontSize: 18 }}>Game Board Size: {options.boardSize}</Typography>
 
-        <Slider onChange={(e) => handleBoardSize(e)} value={options.boardSize} min={3} max={20} />
+        <Slider onChange={(e) => handleBoardSize(e)} value={options.boardSize} min={3} max={100} />
         <Button onClick={(e) => handleGameState(e)} variant="outlined" color="inherit" size="large" sx={{ mt: 5, fontSize: 18 }}>START GAME?</Button>
       </form>
 
